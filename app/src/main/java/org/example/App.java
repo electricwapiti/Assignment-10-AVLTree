@@ -9,6 +9,27 @@ public class App {
     }
 
     public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
+        // Demo of AVLTree usage
+        AVLTree tree = new AVLTree();
+
+        // Inserts four nodes into the tree
+        tree.insert(3);
+        tree.insert(4);
+        tree.insert(5);
+        tree.insert(6);
+
+        // Prints out a serialized tree (preorder with 'nil' markers)
+        System.out.println("Serialized: " + tree.serialize());
+
+        // Deletes a node from the tree
+        tree.delete(6);
+
+        // Prints out serialized tree after deletion
+        System.out.println("After delete 6: " + tree.serialize());
+
+        // Deserialize into a new tree and serialize again to verify
+        String s = tree.serialize();
+        AVLTree tree2 = AVLTree.deserialize(s);
+        System.out.println("Deserialized: " + tree2.serialize());
     }
 }
